@@ -35,7 +35,7 @@ var controller = Botkit.slackbot({
     }
     );
 
-controller.setupWebserver(3000, function (err, webserver) {
+controller.setupWebserver(4000, function (err, webserver) {
     controller.createWebhookEndpoints(controller.webserver);
 
     controller.createOauthEndpoints(controller.webserver, function (err, req, res) {
@@ -74,6 +74,9 @@ function lookupWeather(watsonDataOutput, bot, message) {
             break;
         case 'Hamburg':
             coordinates = '53.55/9.99';
+            break;
+        case 'New York':
+            coordinates = '42.34/-75.18';
             break;
         default:
             coordinates = '52.52/13.38'; // Berlin
