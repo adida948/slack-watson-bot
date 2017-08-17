@@ -98,12 +98,15 @@ function lookupWeather(watsonDataOutput, bot, message) {
 
 function lookupNews(watsonDataOutput, bot, message) {
     let news = watsonDataOutput.context.action.news;
+    console.log(news);
 
     let newsUrl = 'https://newsapi.org/v1/articles?source=techcrunch&' + process.env.NEWS_TOKEN;
 
     request(newsUrl, function (error, response, body) {
         var info = JSON.parse(body);
-        let answer = "The current top news in techcruch " + info.aritcles.title
+        console.log(info);
+
+        let answer = "The current top news in techcruch " + info.articles.title;
         bot.reply(message, answer);
     })
 }
