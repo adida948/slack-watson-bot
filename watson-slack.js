@@ -100,7 +100,7 @@ function lookupNews(watsonDataOutput, bot, message) {
     let news = watsonDataOutput.context.action.news;
     console.log(news);
 
-    let newsUrl = 'https://newsapi.org/v1/articles?source=techcrunch&' + process.env.NEWS_TOKEN;
+    let newsUrl = 'https://newsapi.org/v1/articles?source=techcrunch&apikey=' + process.env.NEWS_TOKEN;
 
     request(newsUrl, function (error, response, body) {
         var info = JSON.parse(body);
