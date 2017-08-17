@@ -106,7 +106,7 @@ function lookupNews(watsonDataOutput, bot, message) {
         var info = JSON.parse(body);
         console.log(info);
 
-        let answer = "The current top news in techcruch " + info.articles.title;
+        let answer = "The current top news in techcruch " + info.articles[0].title;
         bot.reply(message, answer);
     })
 }
