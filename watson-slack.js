@@ -59,6 +59,8 @@ function invokeAction(watsonDataOutput, bot, message) {
         case 'lookupWeather':
             lookupWeather(watsonDataOutput, bot, message);
             break;
+        case 'lookupNews':
+            lookupNews(watsonDataOutput,bot, message);
         default:
             bot.reply(message, "Sorry, I cannot execute what you've asked me to do");
     }
@@ -90,6 +92,18 @@ function lookupWeather(watsonDataOutput, bot, message) {
         var info = JSON.parse(body);
         let answer = "The current temperature in " + info.observation.obs_name
             + " is " + info.observation.temp + " °C"
+        bot.reply(message, answer);
+    })
+}
+
+function lookupNews(watsonDataOutput, bot, message) {
+    let news = watsonDataOutput.context.action.news;
+
+    let newsUrl = 'https://newsapi.org/v1/articles?source=techcrunch&' + process.env.NEWS_TOKEN;
+
+    request(newsUrl, function (error, response, body) {
+        var info = JSON.parse(body);
+        let answer = "The current top news in techcruch " + info.aritcles.title
         bot.reply(message, answer);
     })
 }
