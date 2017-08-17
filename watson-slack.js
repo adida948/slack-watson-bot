@@ -61,6 +61,7 @@ function invokeAction(watsonDataOutput, bot, message) {
             break;
         case 'lookupNews':
             lookupNews(watsonDataOutput,bot, message);
+            break;
         default:
             bot.reply(message, "Sorry, I cannot execute what you've asked me to do");
     }
@@ -98,7 +99,7 @@ function lookupWeather(watsonDataOutput, bot, message) {
 
 function lookupNews(watsonDataOutput, bot, message) {
     let news = watsonDataOutput.context.action.news;
-    console.log(news);
+    // console.log(news);
 
     let newsUrl = 'https://newsapi.org/v1/articles?source=techcrunch&apikey=' + process.env.NEWS_TOKEN;
 
